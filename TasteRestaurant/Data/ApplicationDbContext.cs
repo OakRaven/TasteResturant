@@ -12,5 +12,7 @@ namespace TasteRestaurant.Data
             : base(options)
         {
         }
+
+        public DbSet<CategoryType> CategoryType { get; set; }
     }
 }
