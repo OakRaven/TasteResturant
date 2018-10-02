@@ -1,0 +1,26 @@
+﻿@model Data.SingleButtonPartial
+
+<td style="width: 150px;">
+    <div class="btn-group" role="group">
+        <partial name="_SingleButtonPartial" model='new SingleButtonPartial {
+            Page="Edit",
+            ButtonType="btn-primary",
+            Glyph="pencil",
+            Id = Model.Id
+        }' />
+
+        <partial name="_SingleButtonPartial" model='new SingleButtonPartial {
+            Page="Details",
+            ButtonType="btn-success",
+            Glyph="list",
+            Id = Model.Id
+        }' />
+
+        <partial name="_SingleButtonPartial" model='new SingleButtonPartial {
+            Page="Delete",
+            ButtonType="btn-danger",
+            Glyph="trash",
+            Id = Model.Id
+        }' />
+    </div>
+</td>
