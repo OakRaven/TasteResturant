@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using TasteRestaurant.Data;
 
-namespace TasteRestaurant.Pages.CategoryTypes
+namespace TasteRestaurant.Pages.FoodTypes
 {
     public class DetailsModel : PageModel
     {
@@ -16,7 +16,7 @@ namespace TasteRestaurant.Pages.CategoryTypes
         }
 
         [BindProperty]
-        public CategoryType CategoryType { get; set; }
+        public FoodType FoodType { get; set; }
 
         public async Task<IActionResult> OnGet(int? id)
         {
@@ -25,9 +25,9 @@ namespace TasteRestaurant.Pages.CategoryTypes
                 return NotFound();
             }
 
-            CategoryType = await _db.CategoryType.SingleOrDefaultAsync(i => i.Id == id);
+            FoodType = await _db.FoodType.SingleOrDefaultAsync(i => i.Id == id);
 
-            if (CategoryType == null)
+            if (FoodType == null)
             {
                 return NotFound();
             }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using TasteRestaurant.Data;
 
-namespace TasteRestaurant.Pages.CategoryTypes
+namespace TasteRestaurant.Pages.FoodTypes
 {
     public class DeleteModel : PageModel
     {
@@ -19,18 +16,18 @@ namespace TasteRestaurant.Pages.CategoryTypes
         }
 
         [BindProperty]
-        public CategoryType CategoryType { get; set; }
+        public FoodType FoodType { get; set; }
 
-        public async Task<IActionResult>     OnGet(int? id)
+        public async Task<IActionResult> OnGet(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            CategoryType = await _db.CategoryType.SingleOrDefaultAsync(i => i.Id == id);
+            FoodType = await _db.FoodType.SingleOrDefaultAsync(i => i.Id == id);
 
-            if(CategoryType == null)
+            if (FoodType == null)
             {
                 return NotFound();
             }
@@ -45,11 +42,11 @@ namespace TasteRestaurant.Pages.CategoryTypes
                 return NotFound();
             }
 
-            CategoryType = await _db.CategoryType.FindAsync(id);
+            FoodType = await _db.FoodType.FindAsync(id);
 
-            if (CategoryType != null)
+            if (FoodType != null)
             {
-                _db.CategoryType.Remove(CategoryType);
+                _db.FoodType.Remove(FoodType);
                 await _db.SaveChangesAsync();
             }
 

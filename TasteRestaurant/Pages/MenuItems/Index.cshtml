@@ -1,0 +1,40 @@
+﻿@page
+@model TasteRestaurant.Pages.MenuItems.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h2>Menu Items</h2>
+<br />
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create New
+    </a>
+</p>
+
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.DefaultMenuItem.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.DefaultMenuItem.Price)</th>
+            <th>Category</th>
+            <th>Food Type</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.MenuItems)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => item.Name)</td>
+            <td>@Html.DisplayFor(m => item.Price)</td>
+            <td>@Html.DisplayFor(m => item.CategoryType.Name)</td>
+            <td>@Html.DisplayFor(m => item.FoodType.Name)</td>
+            <td>
+                <partial name="_TableButtonsPartial" model="new SingleButtonPartial {  Id = item.Id }" />
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
